@@ -1,0 +1,9 @@
+{
+    "cmake.sourceDirectory": "/home/fog/new_ws/src/base_interface",
+    "python.autoComplete.extraPaths": [
+        "/home/fog/new_ws/install/base_interface/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/fog/new_ws/install/base_interface/local/lib/python3.10/dist-packages"
+    ]
+}
