@@ -18,6 +18,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/Addint.srv"
   "srv/MultipyThree.srv"
   "srv/Distance.srv"
+  "srv/CatchTurtle.srv"
   "action/Progress.action"
   
 )
