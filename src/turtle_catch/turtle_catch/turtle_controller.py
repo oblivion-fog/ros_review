@@ -10,6 +10,7 @@ import math
 class TurtleControllerNode(Node):
     def __init__(self):
         super().__init__('turtle_controller')
+        #设置参数：是否优先捕获最近的乌龟
         self.declare_parameter("catch_closest_turtle_first", True)
         self.catch_closest_turtle_first_=self.get_parameter("catch_closest_turtle_first").value
 
@@ -51,7 +52,7 @@ class TurtleControllerNode(Node):
         dist=math.sqrt(pow(dist_x,2)+pow(dist_y,2))
         cmd = Twist()
         if dist<0.5:
-            self.get_logger().info('目标点已到达！')
+            # self.get_logger().info('目标点已到达！')
             cmd.linear.x = 0.0
             cmd.angular.z = 0.0
             self.catch_turtle_service(self.turtle_to_catch_.name)
@@ -77,7 +78,7 @@ class TurtleControllerNode(Node):
         future=self.catch_turtle_client_.call_async(req)
         future.add_done_callback(partial(
             self.callback_catch_service,turtle_name=turtle_name))
-    #catch_turtle回调函数
+    #catch_turtle回调函数，接收 /catch_turtle 服务的响应，判断是否成功捕获乌龟，并打印日志
     def callback_catch_service(self,future,turtle_name):
         response=future.result()
         if response.success:
