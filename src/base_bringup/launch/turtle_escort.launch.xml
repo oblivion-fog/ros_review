@@ -1,43 +1,49 @@
 <launch>
-    <node pkg="turtlesim" exec="turtlesim_node" name="t1" />
-    <node pkg="exercise_py" exec="tf_spawn" name="t2" >
+    <node pkg="turtlesim" exec="turtlesim_node" name="turtlesim" />
+
+    <node pkg="exercise_py" exec="tf_spawn" name="spawn_t2" >
         <param name="turtle_name" value="t2"/>
     </node>
-    <node pkg="exercise_py" exec="tf_spawn" name="t3">
+    <node pkg="exercise_py" exec="tf_spawn" name="spawn_t3">
         <param name="turtle_name" value="t3"/>
         <param name="x" value="2.0"/>
         <param name="y" value="8.0"/>
     </node>
-    <node pkg="exercise_py" exec="tf_spawn" name="t4" >
+    <node pkg="exercise_py" exec="tf_spawn" name="spawn_t4" >
         <param name="turtle_name" value="t4"/>
         <param name="x" value="8.0"/>
         <param name="y" value="2.0"/>
     </node>
-    <!--生成四个乌龟成功,以上代码正确-->
-    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t2"/>
+
+    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster_turtle1" >
+        <param name="turtle_name" value="turtle1"/>
     </node>
-    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t3"/>
+    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster_t2" >
+        <param name="turtle_name" value="t2"/>
     </node>
-    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t4"/>
+    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster_t3" >
+        <param name="turtle_name" value="t3"/>
     </node>
-    <node pkg="exercise_py" exec="tf_listener" name="tf_listener" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t2"/>
-    </node>
-    <node pkg="exercise_py" exec="tf_listener" name="tf_listener" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t3"/>
-    </node>
-    <node pkg="exercise_py" exec="tf_listener" name="tf_listener" >
-        <param name="parent_name" value="turtle1"/>
-        <param name="child_name" value="t4"/>
+    <node pkg="exercise_py" exec="tf_broadcaster" name="tf_broadcaster_t4" >
+        <param name="turtle_name" value="t4"/>
     </node>
 
-    
+    <node pkg="exercise_py" exec="tf_listener" name="tf_listener_t2" >
+        <param name="parent_name" value="turtle1"/>
+        <param name="child_name" value="t2"/>
+        <param name="target_offset_x" value="-1.0"/>
+        <param name="target_offset_y" value="0.0"/>
+    </node>
+    <node pkg="exercise_py" exec="tf_listener" name="tf_listener_t3" >
+        <param name="parent_name" value="turtle1"/>
+        <param name="child_name" value="t3"/>
+        <param name="target_offset_x" value="0.0"/>
+        <param name="target_offset_y" value="1.0"/>
+    </node>
+    <node pkg="exercise_py" exec="tf_listener" name="tf_listener_t4" >
+        <param name="parent_name" value="turtle1"/>
+        <param name="child_name" value="t4"/>
+        <param name="target_offset_x" value="0.0"/>
+        <param name="target_offset_y" value="-1.0"/>
+    </node>
 </launch>
