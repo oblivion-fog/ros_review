@@ -1,0 +1,13 @@
+<library path="polygon_plugins">
+  <class type="polygon_plugins::Square" base_class_type="polygon_base::RegularPolygon">
+    <description>This is a square plugin.</description>
+  </class>
+  <class type="polygon_plugins::Triangle" base_class_type="polygon_base::RegularPolygon">
+    <description>This is a triangle plugin.</description>
+  </class>
+    <class type="polygon_plugins::Octagon" base_class_type="polygon_base::RegularPolygon">
+    <description>This is a octagon plugin.</description>
+  </class>
+
+</library>
+

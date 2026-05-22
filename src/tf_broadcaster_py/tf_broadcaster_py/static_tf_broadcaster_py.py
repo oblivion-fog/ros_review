@@ -25,10 +25,12 @@ class TfBroadcaster(Node):
         super().__init__('static_tf_broadcaster_py')
         #创建广播对象
         self.tf_broadcaster = StaticTransformBroadcaster(self)
-        #组织并发布数据
+        #组织并发布数据 
+        # make_transforms()函数用来组织坐标变换数据并发布，参数argv是从终端传入的参数列表
         self.make_transforms(argv)
     
     def make_transforms(self,argv):
+        #transformStamped消息类型用来表示坐标变换信息，包括时间戳、父级坐标系id、子级坐标系id、平移和旋转信息
         ts = TransformStamped()
         #get_clock() 获取节点的时钟对象，now() 获取当前时间，to_msg() 将时间转换为消息格式
         ts.header.stamp = self.get_clock().now().to_msg()
